@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html {
+    height: 100%;
+    width: 100%;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+}
+.products__card {
+    width: 15%;
+    font-family: "Roboto", sans-serif;
+    height: 300px;
+    border: solid 2px #c1bdbd;
+    position: relative;
+    margin-right: 20px;
+}
+.card__image-block {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+.card__image {
+    height: 100%;
+}
+.card__meta {
+    font-size: 14px;
+    color: #a6a6a6;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.card__name {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.card__description {
+    padding: 10px;
+    height: 50%;
+    box-sizing: border-box;
+    position: relative;
+}
+.card__cost {
+    position: absolute;
+    bottom: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.card__rating {
+    display: flex;
+    align-items: center;
+}
+.card__rating::after {
+    content: "";
+    background-image: url("img/star.svg");
+    display: block;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+}
+.card__cost::after {
+    content: "";
+    background-image: url("img/rub.svg");
+    display: block;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
