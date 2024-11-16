@@ -1,4 +1,15 @@
+appendProducts();
+
+let card_add = document.querySelector('.products__add');
+let img_add = document.querySelector('.add_img');
+let form_add = document.querySelector('.form__fields');
+let buttom = document.querySelector('.form__button');
+let delete_buttons = document.querySelectorAll('.card__delete');
+let button_true = document.querySelector('#yes');
+let button_false = document.querySelector('#no');
+let modal = document.querySelector('.modal');
 let counter = 0;
+
 if (localStorage.getItem('counter')){
   counter = Number(localStorage.getItem('counter'));
 } else {
@@ -25,24 +36,55 @@ function appendProducts() {
 
       card_product.innerHTML =  `
         <div class="card__image-block">
-          <img class="card__image" src="${card.image}" alt="картинка товара">
-        </div>
-        <div class="card__description">
-          <div class="card__meta">
-            <div class="card__rating">${card.rate}</div>
-            <div class="card__value">${card.value}</div>
-          </div>
-          <div class="card__name">${card.name}</div>
-          <div class="card__cost">${card.price}</div>
-        </div>
+                <img src='img/delete.svg' alt="картинка удалить" data="${card.data}" class='card__delete'>
+                <img class="card__image" src="${card.image_path}" alt="картинка товара">
+            </div>
+            <div class="card__description">
+                <div class="card__meta">
+                    <div class="card__rating">${card.rating}</div>
+                    <div class="card__value">${card.value}</div>
+                </div>
+                <div class="card__name">${card.name}</div>
+                <div class="card__cost">${card.cost}</div>
+            </div>
       `;
-      products.append(card_product);
+      products.prepend(card_product);
     }
   }
 }
 
-// card_1 = {'image': 'img/2.webp', 'rate': 4.88, 'value': '500 калл', 'name': 'Стейк из грудки охлаждённый Зелёная Линия, 500г', 'price': '450'}
-// card_2 = {'image': 'img/1.webp', 'rate': 4.84, 'value': '110 калл', 'name': 'Томаты черри на ветке, 250г', 'price': '120'}
-// createProdcut(card_1)
-// createProdcut(card_2)
-appendProducts()
+card_add.addEventListener('click', function () {
+  img_add.classList.add("hude");
+  form_add.classList.add("show");
+});
+
+buttom.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  let form = document.querySelector('.add__form')
+  let inputs = document.querySelectorAll('.text-field');
+
+  if (form.checkValidity()) {
+    card = {'image_path': inputs[0].value, 'rating': inputs[1].value, 'value': inputs[2].value, 'name': inputs[3].value, 'cost': inputs[4].value, 'data': counter+1};
+    createProdcut(card);
+    location.reload();
+  }
+});
+
+
+for (let delete_button = 0; delete_button < delete_buttons.length; delete_button++){
+  delete_buttons[delete_button].addEventListener('click', function () {
+    modal.classList.add('active');
+    modal.classList.remove('closed');
+    button_false.addEventListener('click', function () {
+      modal.classList.add('closed');
+      modal.classList.remove('active');
+    });
+    button_true.addEventListener('click', function () {
+      modal.classList.add('closed');
+      modal.classList.remove('active');
+      localStorage.removeItem(`card${delete_buttons[delete_button].getAttribute('data')}`);
+      setTimeout(() => location.reload(), 600);
+    });
+  });
+};

@@ -7,7 +7,30 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="products"></div>
+    <div class="modal">
+        <div class="modal__title">Вы точно хотите удалить данный элемент?</div>
+        <div class="modal__buttons">
+            <button id="yes" class="modal__button">Да</button>
+            <button id="no" class="modal__button">Нет</button>
+        </div>
+    </div>
+    <div class="products">
+        <div class="products__add">
+            <img src="img/add.svg" alt="добавить товар" class="add_img">
+            <div class="form__fields">
+                <form class="add__form">
+                    <input type="text" placeholder="Путь до изображения" class="form__image-path text-field" id="image-path" required>
+                    <input type="text" placeholder="Оценка товара" class="form__rating text-field" id="rating" required>
+                    <input type="text" placeholder="Калорийность товара" class="form__value text-field" id="value" required>
+                    <input type="text" placeholder="Название товара" class="form__name text-field" id="name" required>
+                    <input type="text" placeholder="Цена" class="form__cost text-field" id="cost" required>
+                </form>
+                <div class='button-blocks'>
+                    <button class="form__button" type="submit">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

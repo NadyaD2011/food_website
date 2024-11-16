@@ -11,6 +11,127 @@ html {
     padding: 20px;
     margin: 20px;
 }
+.text-field{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.form__fields{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    width: 85%;
+}
+.form__fields.show {
+    opacity: 1;
+    visibility: visible;
+}
+.button-blocks {
+    display: flex;
+    justify-content: center;
+}
+.card__delete {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+    visibility: hidden;
+}
+.modal{
+    position: absolute;
+    width: 35%;
+    height: 100px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    background-color: #ffffff;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    top: -100%;
+}
+@keyframes shaky {
+    from {
+        top: 0%;
+    }
+    50% {
+        top: 6%;
+    }
+    to {
+        top: 3%;
+    }
+}
+@keyframes shaky-close {
+    from {
+        top: 3%;
+    }
+    50% {
+        top: 7%;
+    }
+    to {
+        top: -100%;
+    }
+}
+.modal.active{
+    animation: shaky 0.5s ease-in-out forwards;
+}
+.modal.closed{
+    animation: shaky-close 0.5s ease-in-out forwards;
+}
+.modal__buttons{
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+.modal__button{
+    background-color: #1a1919;
+    color: #eceaea;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.modal__button:first-child{
+    margin-right: 10px;
+}
+.modal__title{
+    font-weight: 700;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-align: center;
+}
+.products__card:hover .card__delete{
+    opacity: 1;
+    visibility: visible;
+}
+.products__add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    width: 15%;
+    font-family: "Roboto", sans-serif;
+    height: 300px;
+    border: solid 2px #c1bdbd;
+    position: relative;
+    margin-right: 20px;
+}
+.products__add img {
+    width: 40%;
+    opacity: 1;
+    visibility: visible;
+}
+img.add_img.hude {
+    opacity: 0;
+    visibility: hidden;
+}
 .products__card {
     width: 15%;
     font-family: "Roboto", sans-serif;
@@ -18,6 +139,7 @@ html {
     border: solid 2px #c1bdbd;
     position: relative;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .card__image-block {
     width: 100%;
