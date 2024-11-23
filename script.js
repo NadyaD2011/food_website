@@ -19,7 +19,8 @@ if (localStorage.getItem('counter')){
 function createProdcut(card) {
   counter += 1;
   localStorage.setItem('counter', counter);
-
+  
+  card['data'] = counter;
   localStorage.setItem(`card${counter}`, JSON.stringify(card));
 }
 
@@ -65,7 +66,7 @@ buttom.addEventListener('click', function (event) {
   let inputs = document.querySelectorAll('.text-field');
 
   if (form.checkValidity()) {
-    card = {'image_path': inputs[0].value, 'rating': inputs[1].value, 'value': inputs[2].value, 'name': inputs[3].value, 'cost': inputs[4].value, 'data': counter+1};
+    card = {'image_path': inputs[0].value, 'rating': inputs[1].value, 'value': inputs[2].value, 'name': inputs[3].value, 'cost': inputs[4].value};
     createProdcut(card);
     location.reload();
   }
