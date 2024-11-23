@@ -17,7 +17,6 @@ if (localStorage.getItem('counter')){
 };
 
 function createProdcut(card) {
-  counter += 1;
   localStorage.setItem('counter', counter);
   
   card['data'] = counter;
